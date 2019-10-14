@@ -20,11 +20,14 @@ def osm_result_found(search_term_formatted):
 
 
 def main():
+	BOT_NAME = ''
+	SUBREDDIT_TO_SEARCH = '' 
+
 	gmaps_link = 'https://www.google.com/maps/search/'
 	osm_link = 'https://www.openstreetmap.org/search?query='
 	
-	reddit = praw.Reddit('article_bot')
-	for comment in reddit.subreddit('bottest').stream.comments(skip_existing=True):
+	reddit = praw.Reddit(BOT_NAME)
+	for comment in reddit.subreddit(SUBREDDIT_TO_SEARCH).stream.comments(skip_existing=True):
 
 		text = comment.body
 		if text[:8].lower() == '!mapbot ':
